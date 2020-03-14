@@ -1,9 +1,10 @@
 (ns cljs-asciidoctor.views.home
   (:require
-    [re-frame.core :as rf]
-    [cljs-asciidoctor.use-cases.core-cases :as ccases]
-    [tools.viewtools :as vt]
-    [cljs-asciidoctor.views.compo :as compo]))
+   [re-frame.core :as rf]
+   [cljs-asciidoctor.use-cases.core-cases :as ccases]
+   [tools.viewtools :as vt]
+   [cljs.pprint]
+   ))
 
 
 
@@ -48,8 +49,8 @@
   (when-let [route-data (:data route)]
     (let [view (:view route-data)]
       [:<>
-       [view]])))
-       ;[:pre (with-out-str (cljs.pprint/pprint route))]])))
+       [view]
+       [:pre (with-out-str (cljs.pprint/pprint route))]])))
 
 (defn main-panel []
   (let [active-route (rf/subscribe [::ccases/active-panel])]
