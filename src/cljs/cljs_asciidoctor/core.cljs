@@ -1,6 +1,6 @@
 (ns ^:figwheel-hooks cljs-asciidoctor.core
   (:require
-   [reagent.core :as reagent]
+   [reagent.dom :refer [render]]
    [re-frame.core :as re-frame]
    [cljs-asciidoctor.use-cases.core-cases :as ccases]
    [cljs-asciidoctor.routes :as routes]
@@ -19,8 +19,8 @@
   (println "mount")
   (re-frame/clear-subscription-cache!)
   (styl/inject-trace-styles js/document)
-  (reagent/render [views/main-panel]
-                  (.getElementById js/document "app")))
+  (render [views/main-panel]
+          (.getElementById js/document "app")))
 
 (defn ^:after-load re-render []
   (mount-root))
