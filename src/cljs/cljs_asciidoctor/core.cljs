@@ -1,4 +1,4 @@
-(ns ^:figwheel-hooks cljs-asciidoctor.core
+(ns  cljs-asciidoctor.core
   (:require
    [reagent.dom :refer [render]]
    [re-frame.core :as re-frame]
@@ -22,7 +22,7 @@
   (render [views/main-panel]
           (.getElementById js/document "app")))
 
-(defn ^:after-load re-render []
+(defn  re-render []
   (mount-root))
 
 (defn ^:export init []
@@ -33,4 +33,4 @@
 
   (mount-root))
 
-(defonce init-block (init))
+

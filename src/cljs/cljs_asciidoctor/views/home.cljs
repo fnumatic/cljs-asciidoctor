@@ -32,7 +32,6 @@
 (defn main []
   [:div.container
    [:h2 "home"]
-   [:p "nothing to see here"]
    [:div.row
     [txt-input]
     [ascii-render]]

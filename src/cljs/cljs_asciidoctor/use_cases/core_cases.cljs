@@ -3,7 +3,7 @@
    [re-frame.core :as re-frame]
    [cljs-asciidoctor.db :as db]
    [tools.reframetools :refer [sdb gdb]]
-   [asciidoctor]))
+   ["asciidoctor" :as asciidoctor]))
 
    ;[day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]))
 
