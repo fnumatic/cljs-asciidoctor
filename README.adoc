@@ -1,0 +1,26 @@
+= cljs-asciidoctor
+
+== Migration to Shadow-cljs / tools deps
+
+* slim down tooling
+* slim down config
+* better interop with npm
+
+
+== NPM Lib / Foreign JS Files
+
+No hassle anymore because of Shadow-cljs
+
+
+
+== Development Mode
+
+npx shadow-cljs watch app
+
+
+
+=== Run application:
+
+Shadow-cljs will automatically push cljs changes to the browser.
+
+Wait a bit, then browse to http://localhost:8021.
