@@ -1,0 +1,38 @@
+{
+ :min-bb-version "0.3.7"
+ :tasks
+ {:requires  ([babashka.fs :as fs])
+  :init        (do
+                 (def ansi-green "\u001B[32m") (def ansi-reset "\u001B[0m") (def ansi-yellow "\u001B[33m")
+                 (def target-folder "target")
+                 (defn current-date-formatted [pattern] (let [date (java.time.LocalDateTime/now)
+                                             formatter (java.time.format.DateTimeFormatter/ofPattern pattern)]
+                                         (.format date formatter)))
+                 (defn current-date-long [] (current-date-formatted  "yyyy-MM-dd HH:mm:ss"))
+                 (defn current-date-short [] (current-date-formatted  "yyyy-MM-dd"))
+                 )
+  :enter       (let [{:keys [name]} (current-task)] (println (current-date-long) ansi-yellow "[ ]" ansi-reset name))
+  :leave       (let [{:keys [name]} (current-task)] (println (current-date-long) ansi-green "[✔]︎" ansi-reset name))
+  watch {:task (shell "npx shadow-cljs watch app")}
+  compile {:task (shell "npx shadow-cljs compile app")}
+  release {:task (shell "npx shadow-cljs release app")}
+  ;;updates
+  update-npm {:task (shell "npx npm-check-updates -u")}
+  update-deps {:task (shell "clojure -Moutdated -a outdated --write")}
+
+  deploy-docs {:task (let [rp   "resources/public"
+                           dest "docs"
+                           destjs (str dest "/js")]
+                       (do
+                         (fs/delete-tree dest)
+                         (fs/create-dirs destjs)
+                         (fs/copy (fs/file rp "index.html") dest)
+                         (fs/copy (fs/file rp "js/main.js") destjs)
+                         (run! (fn [f] (fs/copy f dest)) (fs/glob rp "**.{css}"))
+                         nil))}
+ ;;tailwind 
+  tailwind-dev {:task (shell "npm run tw-dev") :doc "Watch files, compiles with jit"}
+  tailwind-prod {:task (shell "npm run tw-prod")}
+ ;;shadow report
+  buildreport {:task (let [ file (str "buildreport_" (current-date-short) ".html")]
+                       (shell (str "npx shadow-cljs run shadow.cljs.build-report app " file)))}}}
