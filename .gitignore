@@ -18,5 +18,7 @@ profiles.clj
 .cpcache
 /resources/public/js
 /package-lock.json
+/.lsp
+/.calva
 
 
