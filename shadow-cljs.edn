@@ -6,6 +6,7 @@
                 :output-dir "resources/public/js"
                 :dev        {:build-hooks [(teknql.tailwind/start-watch!)]}
                 :release    {:build-hooks [(teknql.tailwind/compile-release!)]}
+                :tailwind/output  "resources/public/site.css"
                 :modules    {:main {:entries [cljs-asciidoctor.core]
                                     :init-fn cljs-asciidoctor.core/init}}
                 :devtools   {
