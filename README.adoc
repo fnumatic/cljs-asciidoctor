@@ -1,26 +1,18 @@
-= cljs-asciidoctor
+=  Asciidoc Clojurescript Online Editor
 
-== Migration to Shadow-cljs / tools deps
+https://fnumatic.github.io/cljs-asciidoctor/
 
-* slim down tooling
-* slim down config
-* better interop with npm
-
-
-== NPM Lib / Foreign JS Files
-
-No hassle anymore because of Shadow-cljs
+image::asciidoc-conv-2021-06.png[]
 
 
 
-== Development Mode
+== Run application using babashka
 
-npx shadow-cljs watch app
+https://github.com/babashka/babashka[babashka]
 
-
-
-=== Run application:
-
-Shadow-cljs will automatically push cljs changes to the browser.
-
-Wait a bit, then browse to http://localhost:8021.
+----
+bb watch
+bb compile
+bb release
+bb buildreport
+----
