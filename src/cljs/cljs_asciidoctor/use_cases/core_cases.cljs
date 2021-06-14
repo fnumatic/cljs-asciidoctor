@@ -20,7 +20,6 @@
                   :<- [:text/input]
                   rendered)
 (re-frame/reg-sub ::active-panel (gdb [:active-panel]))
-(re-frame/reg-sub ::re-pressed-example  (gdb [:re-pressed-example]))
 
 (re-frame/reg-event-db ::initialize-db (constantly db/default-db))
 (re-frame/reg-event-db :text/input  (sdb [:text/input]))

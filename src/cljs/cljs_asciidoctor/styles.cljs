@@ -1,15 +1,13 @@
 (ns cljs-asciidoctor.styles
   (:require
       [goog.dom :as gdom]
-      [garden.core :as g]))
+      ))
 
 
 
 
 
 
-(def styles
-  [])
 
 
 
@@ -38,10 +36,6 @@
 
 
 (defn inject-trace-styles [document]
-  (inject-inline-style document "--reframe-template--" (apply g/css styles))
-  (inject-inline-link document "--app.css--"  "css/site.css")
-  (inject-inline-link document "--asciidoc.css--"  "https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css")
-
-  ;(inject-inline-link document "--bootstrap--"  "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css")
-  )
+  (inject-inline-link document "--app.css--"  "site.css")
+  (inject-inline-link document "--tailwindtypo.css--"  "https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"))
 

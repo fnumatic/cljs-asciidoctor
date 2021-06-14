@@ -2,7 +2,6 @@
   (:require
    [re-frame.core :as rf]
    [cljs-asciidoctor.use-cases.core-cases :as ccases]
-   [tools.viewtools :as vt]
    [cljs.pprint]
    ))
 
@@ -11,7 +10,7 @@
 (defn txt-input []
  (let [inp (rf/subscribe [:text/input])]
   [:div.flex.border-2.border-blue-600.h-full.w-full.overflow-scroll
-   [:textarea.h-full.w-full.p-4.outline-none.focus:outline-none.resize-none
+   [:textarea.h-full.w-full.p-4.outline-none.focus:outline-none.resize-none.text-sm
     {
      :value @inp
      :on-change #(rf/dispatch [:text/input (-> % .-target .-value)])
@@ -34,10 +33,7 @@
     [ascii-render]]
    [:div]])
 
-(def toolbar-items
-  [
-   ["#" :routes/frontpage]
-   ["component" :routes/component]])
+
 
 ;; main
 
@@ -52,5 +48,4 @@
 (defn main-panel []
   (let [active-route (rf/subscribe [::ccases/active-panel])]
     [:div
-     ;;[vt/navigation toolbar-items]
      [show-panel @active-route]]))
