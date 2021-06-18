@@ -17,5 +17,5 @@
            metosin/reitit-frontend   {:mvn/version "0.5.13"},
            metosin/reitit            {:mvn/version "0.5.13"},
            re-frame/re-frame         {:mvn/version "1.2.0"}
-           thheller/shadow-cljs      {:mvn/version "2.14.4"}},
+           thheller/shadow-cljs      {:mvn/version "2.14.5"}},
  :paths   [ "resources" "src/clj" "src/cljs" "test/cljs"]}
